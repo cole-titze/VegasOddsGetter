@@ -1,3 +1,3 @@
-import VegasOddsGetter.trigger as trigger
+import VegasOddsGetterTrigger.trigger as trigger
 
 trigger.trigger()
