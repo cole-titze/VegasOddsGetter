@@ -6,3 +6,4 @@ azure-functions
 python-sbr
 requests
 requests-toolbelt
+pyodbc
