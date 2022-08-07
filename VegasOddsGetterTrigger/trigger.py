@@ -17,5 +17,6 @@ def main(mytimer: func.TimerRequest) -> None:
 
 def trigger():
     games = da.get_predicted_games()
+    logging.info("Number of games to process: " + str(len(games)))
     games = odds_getter.get_odds(games)
     da.store_probabilities(games)
