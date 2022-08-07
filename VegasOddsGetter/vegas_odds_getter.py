@@ -2,6 +2,7 @@ from pysbr import *
 from datetime import timedelta
 from Entities.predicted_game import PredictedGame
 import logging
+import time
 
 nhl = NHL()
 sb = Sportsbook()
@@ -24,6 +25,9 @@ def get_home_team_id(home_team_abbreviation: str):
 
 def get_odds(games: list[PredictedGame]):
     for game in games:
+        # Wait 15 seconds between calls to not rate limit api
+        time.sleep(15)
+
         start_date = game.gameDate - timedelta(hours=13)
         end_date = game.gameDate
         home_team_id = get_home_team_id(game.homeTeamAbbreviation)
@@ -36,10 +40,10 @@ def get_odds(games: list[PredictedGame]):
         logging.info("League id: " + str(nhl.league_id))
 
         e = EventsByParticipants([home_team_id], start_date, end_date, nhl.league_id)
-
+        logging.info("Made it here!")
         logging.info("Number of events: " + str(len(e.ids())))
-
-        cl = CurrentLines(e.ids(), nhl.market_ids(['moneyline']), sb.ids(['bovada']))
+        event = e.list()[0]
+        cl = CurrentLines(event['event id'], nhl.market_ids(['moneyline']), sb.ids(['bovada']))
         lines = cl.list(e)[:2]
         # Update vegas odds
         for line in lines:
