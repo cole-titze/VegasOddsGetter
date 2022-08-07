@@ -36,7 +36,7 @@ def get_odds(games: list[PredictedGame]):
         logging.info("League id: " + str(nhl.league_id))
 
         e = EventsByParticipants([home_team_id], start_date, end_date, nhl.league_id)
-
+        logging.info("Made it here!")
         logging.info("Number of events: " + str(len(e.ids())))
 
         cl = CurrentLines(e.ids(), nhl.market_ids(['moneyline']), sb.ids(['bovada']))
