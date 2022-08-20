@@ -28,9 +28,9 @@ def get_home_team_id(home_team_abbreviation: str):
     return home_team_id
 
 def make_odds_api_call(event, odds: vegas.OddsType, sports_book: vegas.SportsBook):
-    if odds == OddsEnum.OPENING:
+    if odds == OddsEnum.CLOSING:
         return CurrentLines(event['event id'], nhl.market_ids(['moneyline']), sb.id(sports_book.value))
-    elif odds == OddsEnum.CLOSING:
+    elif odds == OddsEnum.OPENING:
         return OpeningLines(event['event id'], nhl.market_ids(['moneyline']), sb.id(sports_book.value))
 
 def get_odds(game: PredictedGame, sports_book: vegas.SportsBook, odds: vegas.OddsType):
