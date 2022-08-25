@@ -57,4 +57,10 @@ def get_odds(game: PredictedGame, sports_book: vegas.SportsBook, odds: vegas.Odd
             game.vegasHomeOdds = line['decimal odds']
         if line['participant id'] == away_team_id:
             game.vegasAwayOdds = line['decimal odds']
+    # Make sure odds aren't 0
+    # Check twice to catch if only one team was incorrect
+    if game.vegasHomeOdds == 0:
+        game.vegasHomeOdds = -1
+    if game.vegasAwayOdds == 0:
+        game.vegasAwayOdds = -1
     return game

@@ -14,7 +14,7 @@ def get_password():
 def get_driver():
     return os.environ["ODBC_DRIVER"]
 def get_predicted_games_query(sports_book: str):
-    predicted_games_query = "SELECT TOP(100) [dbo].[PredictedGame].[id],[gameDate],[" + sports_book \
+    predicted_games_query = "SELECT TOP(50) [dbo].[PredictedGame].[id],[gameDate],[" + sports_book \
                             + "VegasHomeOdds],[" + sports_book + "VegasAwayOdds]," \
                             "[home].[abbreviation]," \
                             "[away].[abbreviation]" \

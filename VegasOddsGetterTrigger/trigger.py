@@ -36,7 +36,7 @@ def trigger():
             for game in games:
                 elapsed_time = math.floor(end - start)
                 # Wait 10 seconds between calls to not rate limit api
-                time.sleep(10 - elapsed_time)
+                time.sleep(15 - elapsed_time)
                 start = time.time()
                 predicted_game = odds_getter.get_odds(game, sb, odds)
                 da.store_probability(predicted_game, column_name)
