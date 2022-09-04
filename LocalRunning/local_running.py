@@ -10,7 +10,6 @@ def set_local_environment():
     os.environ["SQL_DATABASE"] = jsonObject["Values"]["SQL_DATABASE"]
     os.environ["SQL_USERNAME"] = jsonObject["Values"]["SQL_USERNAME"]
     os.environ["SQL_PASSWORD"] = jsonObject["Values"]["SQL_PASSWORD"]
-    os.environ["ODBC_DRIVER"] = jsonObject["Values"]["ODBC_DRIVER"]
 
 set_local_environment()
 trigger.trigger()
