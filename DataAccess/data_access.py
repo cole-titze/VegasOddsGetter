@@ -40,3 +40,5 @@ def store_probability(game: PredictedGame, sports_book):
             query = "UPDATE PredictedGame SET " + sports_book + "VegasHomeOdds = " + str(game.get_home_odds()) \
                     + ", " + sports_book + "VegasAwayOdds = " + str(game.get_away_odds()) + "WHERE id = " + str(game.id)
             cursor.execute(query)
+            conn.commit()
+            conn.close()
